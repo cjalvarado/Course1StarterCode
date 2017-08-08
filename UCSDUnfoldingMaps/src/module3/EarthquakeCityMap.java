@@ -47,7 +47,7 @@ public class EarthquakeCityMap extends PApplet {
 	private UnfoldingMap map;
 	
 	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
 
 	
 	public void setup() {
@@ -73,30 +73,53 @@ public class EarthquakeCityMap extends PApplet {
 	    //PointFeatures have a getLocation method
 	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
 	    
-	    // These print statements show you (1) all of the relevant properties 
-	    // in the features, and (2) how to get one property and use it
-	    if (earthquakes.size() > 0) {
-	    	PointFeature f = earthquakes.get(0);
-	    	System.out.println(f.getProperties());
-	    	Object magObj = f.getProperty("magnitude");
-	    	float mag = Float.parseFloat(magObj.toString());
-	    	// PointFeatures also have a getLocation method
-	    }
+	    //TODO (Step 3): Add a loop here that calls createMarker (see below) 
+	    // to create a new SimplePointMarker for each PointFeature in 
+	    // earthquakes.  Then add each new SimplePointMarker to the 
+	    // List markers (so that it will be added to the map in the line below)
 	    
-	    // Here is an example of how to use Processing's color method to generate 
-	    // an int that represents the color yellow.  
-	    int yellow = color(255, 255, 0);
 	    
-	    //TODO: Add code here as appropriate
+	    // Add the markers to the map so that they are displayed
+	    map.addMarkers(markers);
 	}
 		
-	// A suggested helper method that takes in an earthquake feature and 
-	// returns a SimplePointMarker for that earthquake
-	// TODO: Implement this method and call it from setUp, if it helps
+	/* createMarker: A suggested helper method that takes in an earthquake 
+	 * feature and returns a SimplePointMarker for that earthquake
+	 * 
+	 * In step 3 You can use this method as-is.  Call it from a loop in the 
+	 * setp method.  
+	 * 
+	 * TODO (Step 4): Add code to this method so that it adds the proper 
+	 * styling to each marker based on the magnitude of the earthquake.  
+	*/
 	private SimplePointMarker createMarker(PointFeature feature)
-	{
-		// finish implementing and use this method, if it helps.
-		return new SimplePointMarker(feature.getLocation());
+	{  
+		// To print all of the features in a PointFeature (so you can see what they are)
+		// uncomment the line below.  Note this will only print if you call createMarker 
+		// from setup
+		//System.out.println(feature.getProperties());
+		
+		// Create a new SimplePointMarker at the location given by the PointFeature
+		SimplePointMarker marker = new SimplePointMarker(feature.getLocation());
+		
+		Object magObj = feature.getProperty("magnitude");
+		float mag = Float.parseFloat(magObj.toString());
+		
+		// Here is an example of how to use Processing's color method to generate 
+	    // an int that represents the color yellow.  
+	    int yellow = color(255, 255, 0);
+		
+		// TODO (Step 4): Add code below to style the marker's size and color 
+	    // according to the magnitude of the earthquake.  
+	    // Don't forget about the constants THRESHOLD_MODERATE and 
+	    // THRESHOLD_LIGHT, which are declared above.
+	    // Rather than comparing the magnitude to a number directly, compare 
+	    // the magnitude to these variables (and change their value in the code 
+	    // above if you want to change what you mean by "moderate" and "light")
+	    
+	    
+	    // Finally return the marker
+	    return marker;
 	}
 	
 	public void draw() {

@@ -43,7 +43,7 @@ public class EarthquakeCityMap extends PApplet {
 	
 
 	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
+	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
 	
 	// The files containing city names and info and country names and info
 	private String cityFile = "city-data.json";
@@ -162,23 +162,56 @@ public class EarthquakeCityMap extends PApplet {
 	// set this "country" property already.  Otherwise it returns false.
 	private boolean isLand(PointFeature earthquake) {
 		
-		// IMPLEMENT THIS: loop over all countries to check if location is in any of them
 		
-		// TODO: Implement this method using the helper method isInCountry
+		// Loop over all the country markers.  
+		// For each, check if the earthquake PointFeature is in the 
+		// country in m.  Notice that isInCountry takes a PointFeature
+		// and a Marker as input.  
+		// If isInCountry ever returns true, isLand should return true.
+		for (Marker m : countryMarkers) {
+			// TODO: Finish this method using the helper method isInCountry
+			
+		}
+		
 		
 		// not inside any country
 		return false;
 	}
 	
-	// prints countries with number of earthquakes
-	// You will want to loop through the country markers or country features
-	// (either will work) and then for each country, loop through
-	// the quakes to count how many occurred in that country.
-	// Recall that the country markers have a "name" property, 
-	// And LandQuakeMarkers have a "country" property set.
+	/* prints countries with number of earthquakes as
+	 * Country1: numQuakes1
+	 * Country2: numQuakes2
+	 * ...
+	 * OCEAN QUAKES: numOceanQuakes
+	 * */
 	private void printQuakes() 
 	{
 		// TODO: Implement this method
+		// One (inefficient but correct) approach is to:
+		//   Loop over all of the countries, e.g. using 
+		//        for (Marker cm : countryMarkers) { ... }
+		//        
+		//      Inside the loop, first initialize a quake counter.
+		//      Then loop through all of the earthquake
+		//      markers and check to see whether (1) that marker is on land
+		//     	and (2) if it is on land, that its country property matches 
+		//      the name property of the country marker.   If so, increment
+		//      the country's counter.
+		
+		// Here is some code you will find useful:
+		// 
+		//  * To get the name of a country from a country marker in variable cm, use:
+		//     String name = (String)cm.getProperty("name");
+		//  * If you have a reference to a Marker m, but you know the underlying object
+		//    is an EarthquakeMarker, you can cast it:
+		//       EarthquakeMarker em = (EarthquakeMarker)m;
+		//    Then em can access the methods of the EarthquakeMarker class 
+		//       (e.g. isOnLand)
+		//  * If you know your Marker, m, is a LandQuakeMarker, then it has a "country" 
+		//      property set.  You can get the country with:
+		//        String country = (String)m.getProperty("country");
+		
+		
 	}
 	
 	

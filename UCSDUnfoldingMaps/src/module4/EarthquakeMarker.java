@@ -74,7 +74,8 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 		
 	}
 	
-	// determine color of marker from depth
+	// determine color of marker from depth, and set pg's fill color 
+	// using the pg.fill method.
 	// We suggest: Deep = red, intermediate = blue, shallow = yellow
 	// But this is up to you, of course.
 	// You might find the getters below helpful.
