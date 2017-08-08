@@ -28,13 +28,7 @@ public class CityMarker extends SimplePointMarker {
 	}
 	
 	
-	// HINT: pg is the graphics object on which you call the graphics
-	// methods.  e.g. pg.fill(255, 0, 0) will set the color to red
-	// x and y are the center of the object to draw. 
-	// They will be used to calculate the coordinates to pass
-	// into any shape drawing methods.  
-	// e.g. pg.rect(x, y, 10, 10) will draw a 10x10 square
-	// whose upper left corner is at position x, y
+	
 	/**
 	 * Implementation of method to draw marker on the map.
 	 */
@@ -43,6 +37,15 @@ public class CityMarker extends SimplePointMarker {
 		pg.pushStyle();
 		
 		// TODO: Add code to draw a triangle to represent the CityMarker
+		// HINT: pg is the graphics object on which you call the graphics
+		// methods.  e.g. pg.fill(255, 0, 0) will set the color to red
+		// x and y are the center of the object to draw. 
+		// They will be used to calculate the coordinates to pass
+		// into any shape drawing methods.  
+		// e.g. pg.rect(x, y, 10, 10) will draw a 10x10 square
+		// whose upper left corner is at position x, y
+		// Check out the processing documentation for more methods
+		
 		
 		// Restore previous drawing style
 		pg.popStyle();
